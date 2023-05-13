@@ -1,0 +1,12 @@
+{
+  "packageDirectories": [
+    {
+      "path": "lightning-project",
+      "default": true
+    }
+  ],
+  "name": "lightning-project",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "57.0"
+}
