@@ -19,8 +19,8 @@ jobs:
       
       - name: Install Salesforce CLI
         run: |
-          npm install sf --global
-        
+          npm install -g @salesforce/cli
+
       - name: Authenticate with Salesforce
         run: |
           echo ${{ secrets.SFDX_SECRET_KEY }} > keys/secret.key
