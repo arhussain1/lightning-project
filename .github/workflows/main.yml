@@ -1,0 +1,31 @@
+name: Salesforce CI pipeline
+
+on:
+  push:
+    branches: 
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up node js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      
+      - name: Install Salesforce CLI
+        run: |
+          npm install sf --global
+        
+      - name: Authenticate with Salesforce
+        run: |
+          echo ${{ secrets.SFDX_SECRET_KEY }} > keys/secret.key
+          sf org login jwt --username ${{ secrets.SFDX_USERNAME }} --jwt-key-file keys/secret.key --client-id ${{ secrets.SFDX_CONSUMER_KEY }} -d -a DevHub
+      
+      - name: Deploy to Salesforce
+        run: |
+          sf project deploy start --source-dir lightning-project --target-org DevHub
