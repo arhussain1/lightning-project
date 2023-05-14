@@ -20,11 +20,17 @@ jobs:
       - name: Install Salesforce CLI
         run: |
           npm install -g @salesforce/cli
+          
+            # Store secret for production org
+      - name: Create the secret.key file
+        shell: bash
+        run: |
+            echo ${{ secrets.SFDX_SECRET_KEY }} > keys/secret.key
+            pwd
 
       - name: Authenticate with Salesforce
         run: |
-          echo ${{ secrets.SFDX_SECRET_KEY }} > keys/secret.key
-          sf org login jwt --username ${{ secrets.SFDX_USERNAME }} --jwt-key-file keys/secret.key --client-id ${{ secrets.SFDX_CONSUMER_KEY }} -d -a DevHub
+            sf org login jwt --username ${{ secrets.SFDX_USERNAME }} --jwt-key-file /keys/secret.key --client-id ${{ secrets.SFDX_CONSUMER_KEY }} -d -a DevHub
       
       - name: Deploy to Salesforce
         run: |
