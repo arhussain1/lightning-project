@@ -25,7 +25,7 @@ jobs:
       - name: Create the secret.key file
         shell: bash
         run: |
-            echo ${{ secrets.SFDX_SECRET_KEY }} > keys/secret.key
+            echo "${{ secrets.SFDX_SECRET_KEY }}" > keys/secret.key
             pwd
 
       - name: Authenticate with Salesforce
