@@ -1,3 +1,9 @@
 <template>
-  <lightning-checkbox label="My Checkbox" onchange={handleChange}></lightning-checkbox>
+  <div>
+    <input type="checkbox" id="yes" name="yes" value="yes" onchange={handleChange} />
+    <label for="yes">Yes</label>
+    <input type="checkbox" id="no" name="no" value="no" onchange={handleChange} />
+    <label for="no">No</label>
+  </div>
 </template>
+
