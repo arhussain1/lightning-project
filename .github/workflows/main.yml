@@ -20,8 +20,11 @@ jobs:
       - name: Install Salesforce CLI
         run: |
           npm install -g @salesforce/cli
+        
+      - name: Debug
+        run: |
+          ls -al
           
-            # Store secret for production org
       - name: Create the secret.key file
         shell: bash
         run: |
