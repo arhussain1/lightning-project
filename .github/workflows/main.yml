@@ -32,6 +32,6 @@ jobs:
         run: |
             sf org login jwt --username ${{ secrets.SFDX_USERNAME }} --jwt-key-file ./secret.key --client-id ${{ secrets.SFDX_CONSUMER_KEY }} -d -a DevHub
       
-#       - name: Deploy to Salesforce
-#         run: |
-#           sf project deploy start --source-dir lightning-project --target-org DevHub
+      - name: Deploy to Salesforce
+        run: |
+          sf project deploy start --source-dir lightning-project --target-org DevHub
