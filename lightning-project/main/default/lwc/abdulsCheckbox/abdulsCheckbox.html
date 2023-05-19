@@ -1,12 +1,24 @@
 <template>
   <lightning-card title="Opportunity Product Skills Manager" icon-name="custom:custom19">
-      <div class="slds-m-around_medium">
-          <lightning-checkbox-group name="skillsCheckboxGroup"
-                                    label="Skills"
-                                    options={skillOptions}
-                                    value={selectedSkills}
-                                    onchange={handleSkillsChange}>
-          </lightning-checkbox-group>
+    <div class="container">
+      <lightning-input
+        class="search-input"
+        type="text"
+        label="Search Skills"
+        onchange={handleInputChange}
+      ></lightning-input>
+      <div class="skills-container">
+        <template for:each={filteredSkills} for:item="skill">
+          <lightning-input
+            key={skill.value}
+            type="checkbox"
+            label={skill.label}
+            value={skill.value}
+            checked={skill.checked}
+            onchange={handleCheckboxChange}
+          ></lightning-input>
+        </template>
       </div>
+    </div>
   </lightning-card>
 </template>

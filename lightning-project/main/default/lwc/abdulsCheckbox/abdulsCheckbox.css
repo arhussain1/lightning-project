@@ -1,3 +1,14 @@
-.my-background {
-  background-color: white;
+.container {
+  padding: 20px;
+  width: 100vw;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.search-input {
+  width: 300px;
+}
+
+.skills-container {
+  column-width: 300px;
 }
